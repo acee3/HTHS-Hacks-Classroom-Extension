@@ -6,6 +6,15 @@ function createAlarm(year, month, day, hour, minute) {
   chrome.alarms.create('alarm', {
       when: timestamp
   });
+  var options = {
+    type: 'basic',
+    iconUrl: 'notification.ico',
+    title: 'Alarm Set!',
+    message: "Finish it before the deadline :)"
+  }
+  let id = 'notif'
+  chrome.notifications.clear(id);
+  chrome.notifications.create(id, options);
 }
 
 chrome.alarms.onAlarm.addListener(function(alarm) {
